@@ -1,0 +1,45 @@
+﻿@model ManejoEmpleados.ViewModels.Home.EmpleadosViewModel
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.TituloPagina</title>
+</head>
+<body>
+    <h1>@Model.TituloPagina</h1>
+    <br />
+    <h2>@Model.Subtitulo</h2>
+    <div class="container-grid">
+        @foreach (var empleado in Model.Empleados)
+        {
+            <div class="cell">
+                @empleado.Id
+            </div>
+            <div class="cell">
+                @empleado.Nombre
+            </div>
+            <div class="cell">
+                @empleado.Area
+            </div>
+            <div class="cell">
+                @empleado.Email
+            </div>
+        }
+    </div>
+    <style>
+        .container-grid {
+            display: grid;
+            max-width: 300px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            justify-content:stretch;
+            align-items:start;
+            grid-gap:3px;
+        }
+
+        .cell{
+            background-color:aliceblue;
+        }
+    </style>
+</body>
+</html>
