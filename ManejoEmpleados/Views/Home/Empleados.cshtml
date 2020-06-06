@@ -1,12 +1,8 @@
-﻿@model ManejoEmpleados.ViewModels.Home.EmpleadosViewModel
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@Model.TituloPagina</title>
-</head>
-<body>
+﻿@model EmpleadosViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Empleados";
+}
     <h1>@Model.TituloPagina</h1>
     <br />
     <h2>@Model.Subtitulo</h2>
@@ -25,21 +21,32 @@
             <div class="cell">
                 @empleado.Email
             </div>
+            <div class="cell">
+                @*@Html.ActionLink("Ir a empleado", "index", "home", new { id = empleado.Id })*@
+                <a asp-controller="home" asp-action="index" asp-route-id="@empleado.Id" class="btn btn-outline-primary">Ir :)</a>
+                
+
+                <a href="@Url.Action("index","home", new { id = empleado.Id})" class="btn btn-outline-info">Ir a empleado</a>
+            </div>
         }
+    </div>
+<br />
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <a href="/home/index" class="btn btn-primary"> Volver</a>
+        </div>
     </div>
     <style>
         .container-grid {
             display: grid;
             max-width: 300px;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            justify-content:stretch;
-            align-items:start;
-            grid-gap:3px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            justify-content: stretch;
+            align-items: start;
+            grid-gap: 3px;
         }
 
-        .cell{
-            background-color:aliceblue;
+        .cell {
+            background-color: aliceblue;
         }
     </style>
-</body>
-</html>

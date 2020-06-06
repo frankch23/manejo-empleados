@@ -17,17 +17,31 @@ namespace ManejoEmpleados.Controllers
             _empleadoRepository = empleadoRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            Empleado empleado = _empleadoRepository.GetEmpleado(2);
-            var modelo = new IndexViewModel
+
+            if (id == 0)
             {
-                Empleado = empleado,
+                Empleado empleado = _empleadoRepository.GetEmpleado(2);
+                var modelo = new IndexViewModel
+                {
+                    Empleado = empleado,
+                    TituloPagina = "Detalle Empleado"
+                };
+
+                return View(modelo);
+            }
+
+            Empleado empleadoGen = _empleadoRepository.GetEmpleado(id);
+            var modelo2 = new IndexViewModel
+            {
+                Empleado = empleadoGen,
                 TituloPagina = "Detalle Empleado"
             };
 
-            return View(modelo);
+            return View(modelo2);
         }
+
 
         public IActionResult Empleados()
         {

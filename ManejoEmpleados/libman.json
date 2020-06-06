@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [{
+  "library": "twitter-bootstrap@4.5.0",
+  "destination": "wwwroot/lib/bootstrap/"
+}
+,
+{
+  "library": "jquery@3.5.1",
+  "destination": "wwwroot/lib/jquery/",
+  "files": [
+    "jquery.slim.min.js",
+    "jquery.slim.min.map"
+  ]
+}
+,
+{
+  "library": "popper.js@1.16.0",
+  "destination": "wwwroot/lib/popper.js/",
+  "files": [
+    "umd/popper.min.js",
+    "umd/popper.min.js.map"
+  ]
+}
+]
+}
