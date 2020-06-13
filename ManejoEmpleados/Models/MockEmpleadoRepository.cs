@@ -12,11 +12,18 @@ namespace ManejoEmpleados.Models
         {
             _empleadoLista = new List<Empleado>
             {
-                new Empleado(){Id = 1, Nombre = "Juan", Area="IT", Email="juan@miempresa.com"},
-                new Empleado(){Id = 2, Nombre = "Maria", Area="HR", Email="maria@miempresa.com"},
-                new Empleado(){Id = 3, Nombre = "Pedro", Area="Ventas", Email="pedro@miempresa.com"},
-                new Empleado(){Id = 4, Nombre = "Luis", Area="IT", Email="luis@miempresa.com"}
+                new Empleado(){Id = 1, Nombre = "Juan", Area=Area.IT, Email="juan@miempresa.com"},
+                new Empleado(){Id = 2, Nombre = "Maria", Area=Area.HR, Email="maria@miempresa.com"},
+                new Empleado(){Id = 3, Nombre = "Pedro", Area=Area.Ventas, Email="pedro@miempresa.com"},
+                new Empleado(){Id = 4, Nombre = "Luis", Area=Area.IT, Email="luis@miempresa.com"}
             };
+        }
+
+        public Empleado Add(Empleado empleado)
+        {
+            empleado.Id = _empleadoLista.Max(e => e.Id) + 1;
+            _empleadoLista.Add(empleado);
+            return empleado;
         }
 
         /// <summary>

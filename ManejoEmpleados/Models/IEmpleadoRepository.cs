@@ -14,5 +14,7 @@ namespace ManejoEmpleados.Models
         /// </summary>
         /// <returns>Lista de empleados.</returns>
         IEnumerable<Empleado> GetAll();
+
+        Empleado Add(Empleado empleado);
     }
 }

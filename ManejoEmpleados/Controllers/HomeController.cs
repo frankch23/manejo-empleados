@@ -55,5 +55,23 @@ namespace ManejoEmpleados.Controllers
 
             return View(modelo);
         }
+
+        public ViewResult CrearEmpleado()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CrearEmpleado(Empleado empleado)
+        {
+            if (ModelState.IsValid)
+            {
+                _empleadoRepository.Add(empleado);
+                return RedirectToAction(nameof(Empleados), "Home");
+            }
+
+            return View(empleado);
+
+        }
     }
 }

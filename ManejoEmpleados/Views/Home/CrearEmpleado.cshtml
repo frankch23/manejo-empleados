@@ -1,0 +1,35 @@
+﻿@model Empleado
+@{
+    ViewBag.Title = "Crear Empleado";
+}
+
+<div class="container">
+    <h1>@ViewBag.Title</h1>
+    <form asp-controller="home" asp-action="CrearEmpleado" method="post">
+        <div asp-validation-summary="All" class="alert alert-danger" role="alert">
+            
+        </div>
+        <div class="form-group">
+            <label asp-for="Nombre"></label>
+            <input asp-for="Nombre" class="form-control">
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>        
+        <div class="form-group">
+            <label asp-for="Area"></label>
+            <select class="form-control"
+                    asp-for="Area"
+                    asp-items="Html.GetEnumSelectList<Area>()">
+                <option value="">Seleccione Uno</option>
+            </select>
+            <span asp-validation-for="Area" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear!</button>
+    </form>
+</div>
