@@ -26,6 +26,18 @@ namespace ManejoEmpleados.Models
             return empleado;
         }
 
+        public Empleado Delete(int id)
+        {
+            Empleado empleado = _empleadoLista.FirstOrDefault(e => e.Id == id);
+
+            if(empleado != null)
+            {
+                _empleadoLista.Remove(empleado);
+            }
+
+            return empleado;
+        }
+
         /// <summary>
         /// Obtiene todos los empleados.
         /// </summary>
@@ -43,6 +55,20 @@ namespace ManejoEmpleados.Models
         public Empleado GetEmpleado(int id)
         {
             return _empleadoLista.FirstOrDefault(e => e.Id == id);
+        }
+
+        public Empleado Update(Empleado empleadoCambios)
+        {
+            Empleado empleado = _empleadoLista.FirstOrDefault(e => e.Id == empleadoCambios.Id);
+
+            if (empleado != null)
+            {
+                empleado.Nombre = empleadoCambios.Nombre;
+                empleado.Email = empleadoCambios.Email;
+                empleado.Area = empleadoCambios.Area;
+            }
+
+            return empleado;
         }
     }
 }

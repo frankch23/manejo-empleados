@@ -16,5 +16,9 @@ namespace ManejoEmpleados.Models
         IEnumerable<Empleado> GetAll();
 
         Empleado Add(Empleado empleado);
+
+        Empleado Update(Empleado empleadoCambios);
+
+        Empleado Delete(int id);
     }
 }

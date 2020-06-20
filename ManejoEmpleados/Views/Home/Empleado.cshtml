@@ -1,0 +1,29 @@
+﻿@model EmpleadoViewModel
+@{ 
+    ViewBag.Title = "Inicio";
+}
+@section Head{
+<meta property="og:site_name" content="Manejo Empleados"/>
+<meta property="og:description" content="Texto descriptivo del enlace" />
+ }
+    
+<h1>@Model.TituloPagina</h1>
+    <h2>
+        Empleado
+    </h2>
+    <p>Nombre: @Model.Empleado.Nombre</p>
+    <p>Id: @Model.Empleado.Id</p>
+    <p>Area: @Model.Empleado.Area</p>
+    <p>Correo: @Model.Empleado.Email</p>
+<hr />
+<div class="row">
+    <div class="col-xs-12 col-md-3">
+        <a href="/home/empleados" class="btn btn-primary"> Todos los Empleados</a>
+    </div>
+</div>
+@section Scripts{ 
+    <script src="~/js/inicio.js"></script>
+    <script>
+    console.log("Nombre Usuario @Model.Empleado.Id :", "@Url.Action("index","home", new { id = Model.Empleado.Id})");
+    </script>
+}

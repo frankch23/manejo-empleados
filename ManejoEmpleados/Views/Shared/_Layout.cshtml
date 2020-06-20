@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<IdentityUser> signInManager;
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -18,6 +20,23 @@
           asp-fallback-href="~/lib/bootstrap/css/bootstrap.css"
           asp-suppress-fallback-integrity="true">
 </environment>
+
+    @if (signInManager.IsSignedIn(User))
+    {
+        <ul>
+            <li>
+                <form method="post">
+                    <button type="submit">
+                        LogOut @User.Identity.Name
+                    </button>
+                </form>
+            </li>
+        </ul>
+    }
+    else
+    {
+
+    }
 
 </head>
 <body>

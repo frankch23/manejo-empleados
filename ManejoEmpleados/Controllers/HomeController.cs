@@ -5,24 +5,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ManejoEmpleados.ViewModels.Home;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ManejoEmpleados.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IEmpleadoRepository _empleadoRepository;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> signInManager;
 
-        public HomeController(IEmpleadoRepository empleadoRepository)
+        public HomeController(IEmpleadoRepository empleadoRepository, 
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager)
         {
             _empleadoRepository = empleadoRepository;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
-        public IActionResult Index(int id)
+        [AllowAnonymous]
+        public IActionResult Index()
         {
-
-            if (id == 0)
+            var user = new IdentityUser
             {
-                Empleado empleado = _empleadoRepository.GetEmpleado(2);
+                UserName = "Usuario",
+                Email = "Email"
+            };
+            userManager.CreateAsync(user, "pass");
+
+            signInManager.SignInAsync(user, false);
+            signInManager.SignOutAsync();
+            /*if (id == 0)
+            {
+               Empleado empleado = _empleadoRepository.GetEmpleado(2);
                 var modelo = new IndexViewModel
                 {
                     Empleado = empleado,
@@ -30,16 +48,18 @@ namespace ManejoEmpleados.Controllers
                 };
 
                 return View(modelo);
-            }
+                return View();
+            }*/
 
-            Empleado empleadoGen = _empleadoRepository.GetEmpleado(id);
-            var modelo2 = new IndexViewModel
+            /*Empleado empleadoGen = _empleadoRepository.GetEmpleado(id);
+            var modelo2 = new EmpleadoViewModel
             {
                 Empleado = empleadoGen,
                 TituloPagina = "Detalle Empleado"
             };
 
-            return View(modelo2);
+            return View(modelo2);*/
+            return View();
         }
 
 
@@ -72,6 +92,23 @@ namespace ManejoEmpleados.Controllers
 
             return View(empleado);
 
+        }
+
+        public IActionResult Empleado(int id)
+        {
+            if (id == 0)
+           {
+                throw new Exception("Atributo no valido!");
+           }
+
+            Empleado empleadoGen = _empleadoRepository.GetEmpleado(id);
+            var modelo2 = new EmpleadoViewModel
+            {
+                Empleado = empleadoGen,
+                TituloPagina = "Detalle Empleado"
+            };
+
+            return View(modelo2);
         }
     }
 }

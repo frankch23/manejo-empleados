@@ -23,10 +23,10 @@
             </div>
             <div class="cell">
                 @*@Html.ActionLink("Ir a empleado", "index", "home", new { id = empleado.Id })*@
-                <a asp-controller="home" asp-action="index" asp-route-id="@empleado.Id" class="btn btn-outline-primary">Ir :)</a>
+                <a asp-controller="home" asp-action="index" class="btn btn-outline-primary">Ir :)</a>
                 
 
-                <a href="@Url.Action("index","home", new { id = empleado.Id})" class="btn btn-outline-info">Ir a empleado</a>
+                <a href="@Url.Action("empleado","home", new { id = empleado.Id})" class="btn btn-outline-info">Ir a empleado</a>
             </div>
         }
     </div>

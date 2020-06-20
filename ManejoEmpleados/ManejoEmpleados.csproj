@@ -5,7 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200620162808_AddSeed.cs" />
+    <Compile Remove="Migrations\20200620162808_AddSeed.Designer.cs" />
+    <Compile Remove="Migrations\20200620163234_AddSeednewval.cs" />
+    <Compile Remove="Migrations\20200620163234_AddSeednewval.Designer.cs" />
+    <Compile Remove="Migrations\20200620163908_AddSeed.cs" />
+    <Compile Remove="Migrations\20200620163908_AddSeed.Designer.cs" />
+    <Compile Remove="Migrations\20200620170903_AddForeignKeyEmpleadoSede.cs" />
+    <Compile Remove="Migrations\20200620170903_AddForeignKeyEmpleadoSede.Designer.cs" />
+    <Compile Remove="Migrations\20200620171159_AddForeignKeyEmpleadoSede.cs" />
+    <Compile Remove="Migrations\20200620171159_AddForeignKeyEmpleadoSede.Designer.cs" />
+    <Compile Remove="Migrations\20200620171427_AddForeignKeyEmpleadoSede.cs" />
+    <Compile Remove="Migrations\20200620171427_AddForeignKeyEmpleadoSede.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
