@@ -29,14 +29,14 @@ namespace ManejoEmpleados
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(config =>
-            {
+            services.AddControllersWithViews();//config =>
+            /*{
                 var policy = new AuthorizationPolicyBuilder()
                             .RequireAuthenticatedUser()
                             .Build();
 
                 config.Filters.Add(new AuthorizeFilter(policy));
-            });
+            });*/
 
 
             services.AddDbContextPool<AppDbContext>(
@@ -66,7 +66,7 @@ namespace ManejoEmpleados
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseDefaultFiles();
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

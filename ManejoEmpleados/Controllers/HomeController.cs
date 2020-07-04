@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ManejoEmpleados.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private IEmpleadoRepository _empleadoRepository;
@@ -26,7 +26,7 @@ namespace ManejoEmpleados.Controllers
             this.signInManager = signInManager;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public IActionResult Index()
         {
             var user = new IdentityUser
